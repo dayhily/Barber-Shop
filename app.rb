@@ -14,5 +14,6 @@ class Stylist < ActiveRecord::Base
 end
 
 get '/' do
+	@stylists=Stylist.all
 	erb :index			
 end

@@ -1,1 +1,6 @@
 <h2>Добро пожаловать!</h2>
+<% @stylists.each do |stylist|%>
+  <p>
+    <%= stylist.name %>
+  </p>
+<% end %>
