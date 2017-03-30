@@ -23,7 +23,7 @@ end
 before do
     #Переменной @stylists присваивается массив данных произведенных коммандой ActiveRecord
 	#из таблицы с сортировкой по дате создания
-	#SELECT "stylists".* FROM "stylists" ORDER BY created_at DESC
+	#SELECT "stylists".* FROM "stylists"
 	@stylists=Stylist.all	
 end
 
