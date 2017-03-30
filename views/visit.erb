@@ -10,22 +10,22 @@ $(function(){
 <form action="/visit" method="post" role="form">
   <div class="form-group">
     <label>Ваше имя</label>
-    <input name="user_name" type="text" class="form-control" placeholder="Введите ваше имя" value="<%= @user_name %>">
+    <input name="cli[name]" type="text" class="form-control" placeholder="Введите ваше имя" value="<%= @c.name %>">
   </div>
   
   <div class="form-group">
     <label>Ваш телефон</label>
-    <input name="phone" type="text" class="form-control" placeholder="Введите ваш номер телефона" value="<%= @phone %>">
+    <input name="cli[phone]" type="text" class="form-control" placeholder="Введите ваш номер телефона" value="<%= @c.phone %>">
   </div>
    
   <div class="form-group">
     <label>Время визита</label>
-    <input id="datetimepicker" name="date_time" type="text" class="form-control" placeholder="Когда вас ждать?" value="<%= @date_time %>">
+    <input id="datetimepicker" name="cli[date_time]" type="text" class="form-control" placeholder="Когда вас ждать?" value="<%= @c.date_time %>">
   </div>
   
   <div class="form-group">
   <label>Ваш парикмахер</label>
-  <select name="stylist" class="form-control">
+  <select name="cli[stylist]" class="form-control">
     <% @stylists.each do |item| %>
       <option <%= @stylist == item['stylist_name'] ? 'selected' : '' %>><%= item['stylist_name'] %></option>
     <% end %>
@@ -34,7 +34,7 @@ $(function(){
  
   <div class="form-group">
     <label>В какой цвет окрасить?</label>
-      <select id="color" name="color">
+      <select id="color" name="cli[color]">
         <option value="#7bd148">Green</option>
         <option value="#5484ed">Bold blue</option>
         <option value="#a4bdfc">Blue</option>

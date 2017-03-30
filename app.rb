@@ -5,18 +5,23 @@ require 'sinatra/reloader'
 require 'sqlite3'
 require 'sinatra/activerecord'
 
-#Создание БД barbershop.db
+#Устанавливаем соединение с БД barbershop.db
 set :database, "sqlite3:barbershop.db"
 
-#Cоздание класса Client
+#Cоздание модели БД в классе Client
 class Client < ActiveRecord::Base
+	#Валидация переменных при вводе (:name - это параметр 1,
+	#presence: true - это параметр 2 с типом хэш presence=>true)
+	validates :name, presence: true, length: { minimum: 3 }
+	validates :phone, presence: true
+	validates :date_time, presence: true
 end
-#Создание схемы БД в терминале "$ rake db:create_migration NAME=create_clients"
+#Создание миграции БД в терминале "$ rake db:create_migration NAME=create_clients"
 
-#Cоздание класса Stylist
+#Cоздание модели БД в классе Stylist
 class Stylist < ActiveRecord::Base
 end
-#Создание схемы БД в терминале "$ rake db:create_migration NAME=create_stylist"
+#Создание миграции БД в терминале "$ rake db:create_migration NAME=create_stylist"
 
 #Миграция схем в БД "$ rake db:migrate"
 
@@ -32,15 +37,21 @@ get '/' do
 end
 
 get '/visit' do
-  erb :visit
+	
+	#создаем новый массив client и присваиваем @c
+	@c=Client.new
+    
+    erb :visit
 end
 
 post '/visit' do
-  @user_name=params[:user_name]
-  @phone=params[:phone]
-  @date_time=params[:date_time]
-  @stylist=params[:stylist]  
-  @color=params[:color]
+    #Принимаем данные со страницы /visit в таблицу Client
+    @c=Client.new params[:cli]
   
-  erb "<h2>Спасибо!Вы записаны</h2>" 
+    if @c.save
+		erb "<h2>Спасибо, вы записались!</h2>"
+  	else
+		@error = @c.errors.full_messages.first
+		erb :visit
+    end
 end
