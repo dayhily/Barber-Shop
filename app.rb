@@ -32,19 +32,24 @@ before do
 	@clients=Client.order "date_time DESC"
 end
 
+#Формирование главной странцы
 get '/' do
 	erb :index			
 end
 
+#Формирование странцы со списком стилистов
 get '/stylists' do
 	erb :stylists
 end
 
+#Формирование персональной странцы стилиста
 get '/stylist/:id' do
+	#Поиск в твблице (ActiveRecird)
     @stylist=Stylist.find(params[:id])
 	erb :st_page
 end
 
+#Формирование странцы записи клиента
 get '/visit' do
 	
 	#инициализация глобальной переменной @c
@@ -54,13 +59,14 @@ get '/visit' do
 end
 
 post '/visit' do
-    #Принимаем данные со страницы /visit в таблицу Client
+    #Принимаем данные со страницы /visit (ActiveRecird)
     @c=Client.new params[:cli]
-  
+    
+    #Сохраняем данные в таблицу, если прошли валидацию
     if @c.save
 		erb "<h2>Спасибо, вы записались!</h2>"
   	else
-		#Выводит первый элемент из массива ошибок
+		#Иначе выводит первый элемент из массива ошибок
 		@error = @c.errors.full_messages.first
 		erb :visit
     end
