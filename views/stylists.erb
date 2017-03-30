@@ -1,9 +1,16 @@
-<h2>Список стилистов:</h2>
-
+<table class="table table-bordered">
+  <thead>
+    <tr class="info">
+      <th>Список стилистов:</th>
+    </tr>
+  </thead>
 <!-- Цикл, где каждой переменной st присваивается строка в виде хэша из массива @stylists-->
-<% @stylists.each do |st|%>
-  <p>
-    <!-- Вывод на странице /stylist/'stylist_id' значения с ключем stylist_name-->
-    <a href="/stylist/<%= st.id %>"><%= st.stylist_name %></a>
-  </p>
-<% end %>
+  <tbody>
+    <% @stylists.each do |st|%>
+      <tr>
+        <!-- Вывод на странице /stylist/'stylist_id' значения с ключем stylist_name-->
+        <td><a href="/stylist/<%= st.id %>"><%= st.stylist_name %></a></td>
+      </tr>
+    <% end%>
+  </tbody> 
+</table>

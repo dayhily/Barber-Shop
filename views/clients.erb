@@ -1,9 +1,16 @@
-<h2>Список клиентов</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr class="info">
+      <th>Список клиентов</th>
+    </tr>
 
 <!-- Цикл, где каждой переменной cl присваивается строка в виде хэша из массива @clients-->
-<% @clients.each do |cl| %>
-  <p>
-    <!-- Вывод на странице /client/'client_id' значения с ключем name-->
-    <a href="/client/<%= cl.id %>"><%= cl.name %></a>
-  </p>
-<% end %>
+  <tbody>
+    <% @clients.each do |cl| %>
+      <tr>
+        <!-- Вывод на странице /client/'client_id' значения с ключем name-->
+        <td><a href="/client/<%= cl.id %>"><%= cl.name %></a></td>
+      </tr>
+    <% end%>
+  </tbody> 
+</table>

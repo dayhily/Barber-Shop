@@ -1,0 +1,22 @@
+<h2>Cтраница клиента</h2>
+
+<table class="table table-bordered">
+  <thead>
+     <tr class="info">
+      <th>Клиент</th>
+      <th>Телефон</th>
+      <th>Время визита</th>
+      <th>Стилист</th>
+      <th>Цвет краски</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @client.name %></td>
+      <td><%= @client.phone %></td>
+      <td><%= @client.date_time %></td>
+      <td><%= @client.stylist %></td>
+      <td style="background-color: <%= @client.color %>"><%= @client.color %></td>
+    </tr>
+  </tbody> 
+</table>

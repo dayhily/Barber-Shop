@@ -1,2 +1,14 @@
 <h2>Cтраница стилиста</h2>
-<p>Имя стилиста: <%= @stylist.stylist_name %></p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr class="info">
+      <th>Имя стилиста: </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @stylist.stylist_name %></td>
+    </tr>
+  </tbody> 
+</table>
