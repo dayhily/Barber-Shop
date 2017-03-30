@@ -29,7 +29,6 @@ before do
     #Переменной присваивается массив данных из таблицы произведенных коммандой ActiveRecord 
 	#SELECT "stylists".* FROM "stylists" и $SELECT "clients".* FROM "clients" ORDER BY date_time DESC
 	@stylists=Stylist.all
-	@clients=Client.order "date_time DESC"
 end
 
 #Формирование главной странцы
@@ -70,4 +69,14 @@ post '/visit' do
 		@error = @c.errors.full_messages.first
 		erb :visit
     end
+end
+
+get '/clients' do
+    @clients=Client.order "date_time DESC"
+    erb :clients
+end
+
+get '/client/:id' do
+    @client=Client.find(params[:id])
+    erb :cl_page
 end
