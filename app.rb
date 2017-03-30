@@ -38,7 +38,7 @@ end
 
 get '/visit' do
 	
-	#создаем новый массив client и присваиваем @c
+	#инициализация глобальной переменной @c
 	@c=Client.new
     
     erb :visit
@@ -51,6 +51,7 @@ post '/visit' do
     if @c.save
 		erb "<h2>Спасибо, вы записались!</h2>"
   	else
+		#Выводит первый элемент из массива ошибок
 		@error = @c.errors.full_messages.first
 		erb :visit
     end

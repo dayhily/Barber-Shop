@@ -8,8 +8,11 @@ $(function(){
 </script>
 
 <form action="/visit" method="post" role="form">
+  
+  <!-- 'name[id параметр]' - это id формы ввода с id параметром(header) из таблицы
+    'value' - остается введенное содержание формы -->
   <div class="form-group">
-    <label>Ваше имя</label>
+    <label>Ваше имя</label> 
     <input name="cli[name]" type="text" class="form-control" placeholder="Введите ваше имя" value="<%= @c.name %>">
   </div>
   
