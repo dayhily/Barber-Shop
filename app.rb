@@ -37,7 +37,12 @@ get '/' do
 end
 
 get '/stylists' do
-	erb :stylists			
+	erb :stylists
+end
+
+get '/stylist/:id' do
+    @stylist=Stylist.find(params[:id])
+	erb :st_page
 end
 
 get '/visit' do
