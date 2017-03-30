@@ -36,6 +36,10 @@ get '/' do
 	erb :index			
 end
 
+get '/stylists' do
+	erb :stylists			
+end
+
 get '/visit' do
 	
 	#инициализация глобальной переменной @c
