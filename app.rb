@@ -26,10 +26,10 @@ end
 #Миграция схем в БД "$ rake db:migrate"
 
 before do
-    #Переменной @stylists присваивается массив данных произведенных коммандой ActiveRecord
-	#из таблицы с сортировкой по дате создания
-	#SELECT "stylists".* FROM "stylists"
-	@stylists=Stylist.all	
+    #Переменной присваивается массив данных из таблицы произведенных коммандой ActiveRecord 
+	#SELECT "stylists".* FROM "stylists" и $SELECT "clients".* FROM "clients" ORDER BY date_time DESC
+	@stylists=Stylist.all
+	@clients=Client.order "date_time DESC"
 end
 
 get '/' do
